@@ -39,16 +39,23 @@ Open app.py and fill in the required information
 ### Starting the servers
 
 1. Flask Server
-   - change directory to where the app.py file is placed with cd <b>file_path</b>
-   - flask run 
-      - can change port with -p <b>port_number</b> (e.g. flask run -p 3000)
+   - change directory to where the app.py file is placed with `cd` followed by <b>file path</b>
+   - current code is set for <b>waitress</b>, comment out the line with `serve`(line 125) and uncomment line with `app.run` (line 124) to just use <b>Flask</b> 
+   - `flask run` 
+      - can change port with -p <b>port_number</b> (e.g. `flask run -p 3535`)
+\
+**Note Flask is only for development purpose. (It's single threaded and not as stable.) Suggest altusing something else like <b>waitress</b>
 
-2. Ngrok
+2. Using Waitress instead of just flask
+   - pip install waitress
+   - change to directory with app.py file
+   - start server using `python app.py` (default port is 3535, default number of threads is 4)
+
+3. Ngrok
    - ngrok http <b>port_number</b>
-      - ex. ngrok http 3000
+      - ex. `ngrok http 3535`
 
 ### Add webhook link to devloper console.
- 
-Ngrok should generate a link for your localhost server which you will go to where you got the access token and paste.
+Ngrok should generate a link for your localhost server which you will go to where you got the access token and paste in <b>Webhook URL</b>.\
 ** Remember to also turn on Webhook.
 

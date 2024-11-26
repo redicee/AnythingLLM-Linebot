@@ -5,6 +5,7 @@ import json
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -61,7 +62,6 @@ def linebot():
                 "slug": username,
             } 
 
-            print(type(disp_name))
             print("Checking User..")
             api_call("check_user", headers=headers, user=thread_template)                        
             try:
@@ -121,4 +121,5 @@ def check_user_threads(response_data, user, headers):
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)   # Uncomment this to use flask
+    serve(app, host="127.0.0.1", port=3535)  #for waitress
